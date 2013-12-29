@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Informations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.css">
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.js"></script>
+   <script src=""></script>
+	<link rel="stylesheet" href="" type="text/css">
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <div data-role="page">
+      <div data-role="header" data-postion="fixed">
+        <h1>Médiafood</h1>
+      </div>
+      <!--fin header-->
+     
+     
+      <div data-role="content">
+        <ul data-role="listview" >
+			
+			 <li data-role="list-divider">Informations</li>
+				  <h5 class="centrer">Conception réalisation Benoit Martinet</h5>
+				 
+				    
+				  <p class="centrer">Copyright 2013</p> 
+			<p><li data-role="list-divider">Contact</li></p>
+				  <form action="" method="" >
+						<div data-role="fieldcontain">
+							  <label for="nom">Nom</label>
+							  <input type="text" max="25" id="nom" name="nom" placeholder="Votre nom" required /><br />
+						
+							  <label for="prenom">Prénom</label>
+							  <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required /><br />
+						
+							
+							  <label for="email">Mail</label>
+							  <input type="email" id="email" name="email" placeholder="Votre mail" required /><br /><br />
+						  
+						
+							  <textarea cols="30" rows="5" id="message" name="message" >Votre message</textarea>
+							  <input type="button" data-theme="b" value="Valider" onclick="validate();" name="valider" id="action" required />
+						  
+						</div>
+					
+				  </form>
+         
+        </ul>
+       
+      </div>
+      <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+             <li><a href="http://www.mediafood.org/tice-pro" data-icon="star">Ep@tice</a></li>
+            <li><a href="index.html" data-icon="home">Maison</a></li>
+            <li><a href="infos.html" data-icon="info" class="ui-btn-active">Infos</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--fin page-->
+    <script>
+	/*envoie des infos du forumulaire à contact.php mais en ajax. Pour envoyer en normal il faudrait désactiver ajax avec ajax false dans form
+	nom: prenom etc correspondent à la valeur NAME et $('#nom') etc à l'id
+	*/
+	function ajaxRequete(){
+
+		var xhr_object=null;//On détruit toute précédente variable du même nom
+		if(window.XMLHttpRequest){//si l'objet XMLHttpRequest existe dans le nav
+			var xhr_object= new XMLHttpRequest();//on instancie
+		}else if (window.ActiveXObject){//sinon exist'il en activeX si oui on instancie
+			xhr_object= new ActiveXObject("Microsoft.XMLHTTP");
+		}else{
+			alert("Votre Nav n'est pas compatible ajax");//sinon alert et return
+			return;// de cette façon le code ci-dessous n'est pas lu
+		}
+		xhr_object.open("GET","contact.php?nom="+$("#nom").value+"&prenom="+$("#prenom").value+"&email="+$("#email").value+"&message="+$("#message").value,true);
+							//la méthode open() ne retourne pas de valeur, elle permet le paramétrage de la requête
+		
+		xhr_object.onreadystatechange = function(){
+				if(xhr_object.readyState == 4){//si la requête c'est bien passée
+					var reponse=xhr_object.responseText; //la variable récupère le contenu de la requête gra^ce à la propirété "responseText"
+					alert(reponse);
+					//eval(reponse);//la fonction eval(chaine) évalue et execute le code js d'une chaine
+				}
+		}
+		
+		xhr_object.send(null);//la méthode send() déclenche l'appel
+	}
+	
+      function validate() {
+
+			$.ajax({
+				url: 'contact.php',
+				data: {
+				nom: $('#nom').val()//,
+				//prenom: $('#prenom').val(),
+				//email: $('#email').val(),
+				//message: $('#message').val() //pas de virgule ici il n' y a plus de para apres
+				},
+				type: "POST"
+				
+			});
+				  alert('Message envoyé');
+			
+       }
+      </script>
+    
+
+   });
+  </body>
+</html>
+ 

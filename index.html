@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+  <!--jj-->
+    <meta charset="UTF-8">
+    <title>Les courses de Ben2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+    <link rel="stylesheet" href="moncss.css"/>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	 
+	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+ <script src="script.js"></script>
+
+    <style>
+      
+    </style>
+  </head>
+  <body onload="supporteStorage()">
+    <div data-role="page">
+      <div data-role="header" data-postion="fixed" >
+        <h1>Les courses de Ben2</h1>
+      </div>
+    
+      <div data-role="content">
+       <p id="caddie"><img src="caddie.png" style="max-width:20%" /></p>
+ 
+<form  action="" method="" >
+<div data-role="fieldcontain">
+<label for="produit">Produit</label>
+<input type="text" name="produit" id="produit" placeholder="Produit à acheter ou à modifier"  autocomplete="on"/><br />
+<label for="quantites">Quantité</label>
+<input type="number" min="0" max="30" step="1" value="" name="quantites" id="quantites" placeholder="Combien ?"   /><br />  
+</div>
+</form>
+<div id="group" data-role="controlgroup" data-type= "horizontal">
+<input type="button" data-theme="b" value="Ajouter" id="btn_ajouter" name="valider" onclick="setItem()"/>
+<input type="button" data-theme="b" value="Tout supprimer" id="btn_supprimer "name="valider" onclick="supprimerTout()" />
+</div>
+<ul data-role="listview" data-inset="true" id="listePaires"> 
+<!--contenu implémenté par la suite grâce à la fx afficheListe()-->
+<li id="liste">ssss</li>
+</ul>
+</div>
+    
+<div data-role="footer" data-position="fixed">
+ <p id="storageOuiNon">Compatibilité HTML5 du navigateur</p>
+        <div data-role="navbar">
+          <ul>
+             <li><a href="http://www.mediafood.org/tice-pro" data-icon="star">Ep@tice</a></li>
+            <li><a href="index.html" data-icon="home" ">Maison</a></li>
+            <li><a href="infos.html" data-icon="info" class="ui-btn-active">Infos</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--fin page-->
+   <script>
+ 
+
+   </script>
+  </body>
+</html>
+
+
+
+
+
+
